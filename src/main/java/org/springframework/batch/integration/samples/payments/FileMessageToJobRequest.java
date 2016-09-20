@@ -23,10 +23,7 @@ import org.springframework.batch.integration.launch.JobLaunchRequest;
 import org.springframework.messaging.Message;
 import org.springframework.integration.annotation.Transformer;
 
-/**
- * @author Marius Bogoevici
- * @author Gunnar Hillert
- */
+
 public class FileMessageToJobRequest {
 
 	private Job job;

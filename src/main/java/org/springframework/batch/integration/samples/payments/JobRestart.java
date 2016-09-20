@@ -27,10 +27,7 @@ import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.annotation.ServiceActivator;
 
-/**
- * @author Marius Bogoevici
- * @author Gunnar Hillert
- */
+
 public class JobRestart {
 
 	private static final Log logger = LogFactory.getLog(JobRestart.class);

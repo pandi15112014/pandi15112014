@@ -25,10 +25,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
-/**
- * @author Gunnar Hillert
- *
- */
+
 @Configuration
 @EnableBatchProcessing
 @ImportResource({

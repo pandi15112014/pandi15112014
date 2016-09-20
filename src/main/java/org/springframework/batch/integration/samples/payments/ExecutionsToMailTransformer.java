@@ -21,10 +21,7 @@ import org.springframework.integration.annotation.Transformer;
 import org.springframework.integration.mail.MailHeaders;
 import org.springframework.integration.support.MessageBuilder;
 
-/**
- * @author Marius Bogoevici
- * @author Gunnar Hillert
- */
+
 public class ExecutionsToMailTransformer {
 
 	@Transformer

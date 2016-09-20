@@ -19,10 +19,7 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * @author Marius Bogoevici
- * @author Gunnar Hillert
- */
+
 public class Payment {
 
 	private String sourceAccountNo;

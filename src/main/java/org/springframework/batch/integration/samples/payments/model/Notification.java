@@ -15,10 +15,7 @@
  */
 package org.springframework.batch.integration.samples.payments.model;
 
-/**
- * @author Marius Bogoevici
- * @author Gunnar Hillert
- */
+
 public class Notification {
 
 	private String message;

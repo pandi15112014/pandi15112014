@@ -27,9 +27,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 
-/**
- * @author Marius Bogoevici
- */
+
 public class StubJavaMailSender implements JavaMailSender {
 
 	private MimeMessage uniqueMessage;

@@ -20,10 +20,7 @@ import org.springframework.batch.item.file.mapping.FieldSetMapper;
 import org.springframework.batch.item.file.transform.FieldSet;
 import org.springframework.validation.BindException;
 
-/**
- * @author Marius Bogoevici
- * @author Gunnar Hillert
- */
+
 public class PaymentFieldSetMapper implements FieldSetMapper<Payment> {
 
 	@Override

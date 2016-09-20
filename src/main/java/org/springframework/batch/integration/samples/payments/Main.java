@@ -31,7 +31,7 @@ import org.springframework.messaging.Message;
 /**
  * Starts the Spring Context and will initialize the Spring Integration routes.
  *
- * @author Gunnar Hillert
+ * 
  *
  */
 public final class Main {
@@ -46,28 +46,12 @@ public final class Main {
 	 */
 	public static void main(final String... args) throws InterruptedException {
 
-		System.out.println(""
-				+ ""
-				+ "\n========================================================="
-						+ "\n    Welcome to the Spring Batch Integration              "
-						+ "\n          Payments Import Sample                         "
-						+ "\n                                                         "
-						+ "\n    For more information please visit:                   "
-						+ "\n    http://www.spring.io/spring-batch                    "
-						+ "\n                                                         "
-						+ "\n=========================================================" );
-
+		
 		final ConfigurableApplicationContext context = SpringApplication.run(CommonConfig.class);
 
 		final JdbcTemplate jdbcTemplate = context.getBean(JdbcTemplate.class);
 
 		SpringIntegrationUtils.displayDirectories(context);
-
-		System.out.println("\n========================================================="
-						+ "\n                                                         "
-						+ "\n    Waiting for Job execution to finish.                 "
-						+ "\n                                                         "
-						+ "\n=========================================================" );
 
 		final QueueChannel completeApplicationChannel =
 				context.getBean("completeApplication", QueueChannel.class);

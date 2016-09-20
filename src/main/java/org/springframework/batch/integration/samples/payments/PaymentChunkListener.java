@@ -28,10 +28,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.integration.support.MessageBuilder;
 
-/**
- * @author Marius Bogoevici
- * @author Gunnar Hillert
- */
 public class PaymentChunkListener extends ItemListenerSupport<Payment, Payment> {
 
 	private static final Log logger = LogFactory.getLog(PaymentChunkListener.class);
