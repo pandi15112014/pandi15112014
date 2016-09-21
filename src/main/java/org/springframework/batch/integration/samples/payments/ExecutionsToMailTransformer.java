@@ -28,7 +28,7 @@ public class ExecutionsToMailTransformer {
 	public Message<String> transformExecutionsToMail(JobExecution jobExecution) {
 		String result = "Execution has " + jobExecution.getStatus().toString();
 		return MessageBuilder.withPayload(result)
-				.setHeader(MailHeaders.TO, "siia.test@yahoo.ca")
-				.setHeader(MailHeaders.FROM, "siia.test@yahoo.ca").build();
+				.setHeader(MailHeaders.TO, "Pandiyarajan.Ganapathy@xerox.com")
+				.setHeader(MailHeaders.FROM, "Pandiyarajan.Ganapathy@xerox.com").build();
 	}
 }
