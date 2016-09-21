@@ -19,7 +19,9 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name="payment")
 public class Payment {
 
 	private String sourceAccountNo;

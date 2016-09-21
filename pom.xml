@@ -119,7 +119,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-batch</artifactId>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-oxm -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-oxm</artifactId>
+    <version>3.0.0.RELEASE</version>
+</dependency>
+		
 	</dependencies>
+	
+	
+	
 	<build>
 		<plugins>
 			<plugin>

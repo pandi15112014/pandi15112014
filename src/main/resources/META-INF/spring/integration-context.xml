@@ -24,7 +24,7 @@
 	</int:channel>
 
 	<int-file:inbound-channel-adapter id="pollDataFile"
-		directory="classpath:/data/paymentImport"
+		directory="classpath:/data/paymentImport_FlatFile"
 		channel="files">
 		<int:poller id="poller" fixed-delay="5000"/>
 		</int-file:inbound-channel-adapter>
@@ -35,6 +35,13 @@
 			<property name="job" ref="importPayments"/>
 			<property name="fileParameterName" value="input.file.name"/>
 		</bean>
+	</int:transformer>
+	
+	<int:transformer id="xmlJobLaunchRequest"
+		input-channel="requests" output-channel="files">
+		<bean class="org.springframework.batch.integration.samples.payments.FileMessageToJobRequest"/>
+		<property name="job" ref="importPayments"/>
+			<property name="fileParameterName" value="input.file.name"/>
 	</int:transformer>
 
 	<int:service-activator id="runJob" method="launch" input-channel="requests"

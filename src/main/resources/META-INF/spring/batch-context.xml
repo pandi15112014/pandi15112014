@@ -24,20 +24,41 @@
 		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+
+<bean id="payment" class="org.springframework.batch.integration.samples.payments.model.Payment" scope="prototype"/>
+
 	<batch:job id="importPayments">
-		<batch:step id="loadPayments">
+		<batch:step id="loadPayments" next="convertPayment">
 			<batch:tasklet>
 				<batch:chunk reader="itemReader" writer="itemWriter" commit-interval="1">
 <!--  					<batch:skippable-exception-classes>
 						<batch:include class="org.springframework.batch.item.file.FlatFileParseException"/>
 					</batch:skippable-exception-classes> -->
-					<batch:listeners>
+					
+				</batch:chunk>
+				
+				</batch:tasklet>
+				
+				
+		</batch:step>
+		
+		<batch:step id="convertPayment">
+			<batch:tasklet>
+				<batch:chunk reader="dbReaders" writer="xmlWriters" commit-interval="1">
+ 				<!-- 	<batch:skippable-exception-classes>
+						<batch:include class="org.springframework.batch.item.file.FlatFileParseException"/>
+					</batch:skippable-exception-classes> -->
+					
+				</batch:chunk>
+				<batch:listeners>
 						<batch:listener>
 							<bean class="org.springframework.batch.integration.samples.payments.PaymentChunkListener"/>
 						</batch:listener>
 					</batch:listeners>
-				</batch:chunk>
-			</batch:tasklet>
+					
+				</batch:tasklet>
+				
+				
 		</batch:step>
 		<batch:listeners>
 			<batch:listener ref="notificationExecutionsListener"/>
@@ -68,5 +89,26 @@
 			</bean>
 		</property>
 	</bean>
+	
+	
+	<bean id="dbReaders" class="org.springframework.batch.item.database.JdbcCursorItemReader" scope="step">
+  <property name="dataSource" ref="dataSource"/>
+  <property name="sql" value="select ID,PAYEE as sourceAccountNo, RECIPIENT as destinationAccountNo, AMOUNT, PAY_DATE from test.payments" />
+  <property name="rowMapper">
+   <bean class="org.springframework.batch.integration.samples.payments.PaymentRowMapper" />
+  </property>
+   </bean>
+   
+   <bean id="xmlWriters" class="org.springframework.batch.item.xml.StaxEventItemWriter">
+  <property name="resource" value="file:src/main/resources/data/paymentExport_XML/payment.xml" />
+  <property name="marshaller" ref="paymentMarshaller" />
+  <property name="rootTagName" value="payment" />
+  </bean> 
+    
+    <bean id="empMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+  <property name="classesToBeBound">
+   <value>org.springframework.batch.integration.samples.payments.model.Payment</value>
+  </property>
+   </bean> 
 
 </beans>
