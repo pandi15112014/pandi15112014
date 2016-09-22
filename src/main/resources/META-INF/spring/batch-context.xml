@@ -31,10 +31,6 @@
 		<batch:step id="loadPayments" next="convertPayment">
 			<batch:tasklet>
 				<batch:chunk reader="itemReader" writer="itemWriter" commit-interval="1">
-<!--  					<batch:skippable-exception-classes>
-						<batch:include class="org.springframework.batch.item.file.FlatFileParseException"/>
-					</batch:skippable-exception-classes> -->
-					
 				</batch:chunk>
 				
 				</batch:tasklet>
