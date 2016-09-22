@@ -23,11 +23,27 @@
 		<int:queue capacity="10"/>
 	</int:channel>
 
-	<int-file:inbound-channel-adapter id="pollDataFile"
+	<int-file:inbound-channel-adapter id="pollDataFlatFile"
 		directory="classpath:/data/paymentImport_FlatFile"
-		channel="files">
-		<int:poller id="poller" fixed-delay="5000"/>
+		channel="files" filename-pattern="*.input">
+		
+		<int:poller id="pollerFlatFile" fixed-delay="5000"/>
+		
 		</int-file:inbound-channel-adapter>
+		
+		<int-file:inbound-channel-adapter id="pollDataCSVFile"
+		directory="classpath:/data/paymentImport_CSV"
+		channel="files" filename-pattern="*.csv">
+		<int:poller id="pollerCSVFile" fixed-delay="5000"/>
+		</int-file:inbound-channel-adapter>
+		
+		<int-file:inbound-channel-adapter id="pollDataXMLFile"
+		directory="classpath:/data/paymentImport_XML"
+		channel="files" filename-pattern="*.xml">
+		
+		<int:poller id="pollerXMLFile" fixed-delay="5000"/>
+		</int-file:inbound-channel-adapter>
+		
 
 	<int:transformer id="prepareJobLaunchRequest"
 		input-channel="files" output-channel="requests">
@@ -37,13 +53,6 @@
 		</bean>
 	</int:transformer>
 	
-	<int:transformer id="xmlJobLaunchRequest"
-		input-channel="requests" output-channel="files">
-		<bean class="org.springframework.batch.integration.samples.payments.FileMessageToJobRequest"/>
-		<property name="job" ref="importPayments"/>
-			<property name="fileParameterName" value="input.file.name"/>
-	</int:transformer>
-
 	<int:service-activator id="runJob" method="launch" input-channel="requests"
 		output-channel="statuses">
 		<bean class="org.springframework.batch.integration.launch.JobLaunchingMessageHandler">
