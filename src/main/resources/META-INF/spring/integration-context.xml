@@ -37,13 +37,6 @@
 		</bean>
 	</int:transformer>
 	
-	<int:transformer id="xmlJobLaunchRequest"
-		input-channel="requests" output-channel="files">
-		<bean class="org.springframework.batch.integration.samples.payments.FileMessageToJobRequest"/>
-		<property name="job" ref="importPayments"/>
-			<property name="fileParameterName" value="input.file.name"/>
-	</int:transformer>
-
 	<int:service-activator id="runJob" method="launch" input-channel="requests"
 		output-channel="statuses">
 		<bean class="org.springframework.batch.integration.launch.JobLaunchingMessageHandler">
