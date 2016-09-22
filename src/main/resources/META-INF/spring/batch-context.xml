@@ -105,7 +105,7 @@
   <property name="rootTagName" value="payment" />
   </bean> 
     
-    <bean id="empMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+    <bean id="paymentMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
   <property name="classesToBeBound">
    <value>org.springframework.batch.integration.samples.payments.model.Payment</value>
   </property>
