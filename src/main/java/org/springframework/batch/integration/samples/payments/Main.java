@@ -20,6 +20,8 @@ import java.util.List;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.integration.samples.payments.config.CommonConfig;
+import org.springframework.batch.integration.samples.payments.StubJavaMailSender;
+
 import org.springframework.batch.integration.samples.payments.util.SpringIntegrationUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;

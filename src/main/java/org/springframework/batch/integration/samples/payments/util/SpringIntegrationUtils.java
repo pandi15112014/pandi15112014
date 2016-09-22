@@ -25,6 +25,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.DirectFieldAccessor;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.expression.Expression;
 import org.springframework.integration.file.FileReadingMessageSource;
 import org.springframework.integration.file.FileWritingMessageHandler;
@@ -48,11 +49,18 @@ public final class SpringIntegrationUtils {
 	 * @param context Spring Application Context
 	 */
 	public static void displayDirectories(final ApplicationContext context) {
+		
 
-		final File inDir = (File) new DirectFieldAccessor(context.getBean(FileReadingMessageSource.class)).getPropertyValue("directory");
+		final Map<String, FileReadingMessageSource> fileReadingMessageSources = context.getBeansOfType(FileReadingMessageSource.class);
+		final List<String> inputDirectories = new ArrayList<String>();
+
+		for (final FileReadingMessageSource messageHandler : fileReadingMessageSources.values()) {
+			final File inDir = (File) new DirectFieldAccessor(messageHandler).getPropertyValue("directory");
+			inputDirectories.add(inDir.getAbsolutePath());
+		}
+
 
 		final Map<String, FileWritingMessageHandler> fileWritingMessageHandlers = context.getBeansOfType(FileWritingMessageHandler.class);
-
 		final List<String> outputDirectories = new ArrayList<String>();
 
 		for (final FileWritingMessageHandler messageHandler : fileWritingMessageHandlers.values()) {
@@ -62,9 +70,11 @@ public final class SpringIntegrationUtils {
 
 		final StringBuilder stringBuilder = new StringBuilder();
 
-		stringBuilder.append("\n=========================================================");
-		stringBuilder.append("\n");
-		stringBuilder.append("\n    Input directory is : '" + inDir.getAbsolutePath() + "'");
+		for (final String inputDirectory : inputDirectories) {
+			stringBuilder.append("\n    Input directory is : '" + inputDirectory + "'");
+		}
+
+		
 
 		for (final String outputDirectory : outputDirectories) {
 			stringBuilder.append("\n    Output directory is: '" + outputDirectory + "'");
