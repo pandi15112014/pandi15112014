@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.batch.integration.samples.payment.partitioner;
+package org.springframework.batch.integration.samples.payments.partitioner;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;

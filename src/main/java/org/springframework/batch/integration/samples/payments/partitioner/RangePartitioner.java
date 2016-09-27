@@ -1,4 +1,4 @@
-package org.springframework.batch.integration.samples.payment.partitioner;
+package org.springframework.batch.integration.samples.payments.partitioner;
 
 import java.util.HashMap;
 import java.util.Map;

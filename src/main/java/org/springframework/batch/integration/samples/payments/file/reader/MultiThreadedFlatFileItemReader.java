@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.batch.integration.samples.payment.file.reader;
+package org.springframework.batch.integration.samples.payments.file.reader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
-import org.springframework.batch.integration.samples.payment.partitioner.FlatFilePartitioner;
+import org.springframework.batch.integration.samples.payments.partitioner.FlatFilePartitioner;
 import org.springframework.batch.item.ExecutionContext;
 import org.springframework.batch.item.ItemStreamException;
 import org.springframework.batch.item.file.BufferedReaderFactory;
