@@ -68,14 +68,14 @@
 
 
 
-<bean id="inputPartitioner" class="org.springframework.batch.integration.samples.payment.partitioner.FlatFilePartitioner" scope="step">
+<bean id="inputPartitioner" class="org.springframework.batch.integration.samples.payments.partitioner.FlatFilePartitioner" scope="step">
 			<property name="resource" value="file:///#{jobParameters['input.file.name']}" />
 			<property name="linesToSkip" value="1" />
 		</bean>
 		
 		
 	<bean id="rangePartitioner"
-		class="org.springframework.batch.integration.samples.payment.partitioner.RangePartitioner" />
+		class="org.springframework.batch.integration.samples.payments.partitioner.RangePartitioner" />
 
 	<bean id="taskExecutor" class="org.springframework.core.task.SimpleAsyncTaskExecutor" />
 
@@ -107,7 +107,7 @@
 
 
 
-<bean id="itemReader" class="org.springframework.batch.integration.samples.payment.file.reader.MultiThreadedFlatFileItemReader" scope="step">
+<bean id="itemReader" class="org.springframework.batch.integration.samples.payments.file.reader.MultiThreadedFlatFileItemReader" scope="step">
 	        <property name="lineMapper">
 	           <bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
 				<property name="lineTokenizer">
