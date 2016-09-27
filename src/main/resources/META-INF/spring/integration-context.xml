@@ -30,7 +30,7 @@
 		
 		</int-file:inbound-channel-adapter>
 		
-		<int-file:inbound-channel-adapter id="pollDataCSVFile"
+		<!-- <int-file:inbound-channel-adapter id="pollDataCSVFile"
 		directory="classpath:/data/paymentImport_CSV"
 		channel="files" filename-pattern="*.csv">
 		<int:poller id="pollerCSVFile" fixed-delay="5000"/>
@@ -41,7 +41,7 @@
 		channel="files" filename-pattern="*.xml">
 		
 		<int:poller id="pollerXMLFile" fixed-delay="5000"/>
-		</int-file:inbound-channel-adapter>
+		</int-file:inbound-channel-adapter> -->
 
 	<int:transformer id="prepareJobLaunchRequest"
 		input-channel="files" output-channel="requests">
